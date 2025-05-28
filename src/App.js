@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AppHeader from './common/AppHeader'
-import MarketPairs from './marketpairs'
-import Trade from './trade'
+import MarketPairs from './marketpairs/Index'
+import Trade from './trade/Index'
 
 const App = () => (
   <Router>
@@ -15,11 +15,11 @@ const App = () => (
                     <Route exact path="/" component={MarketPairs} />
                     <Route path="/trade/:symbol" component={Trade} />
                   </div>
-              </div>    
+              </div>
           </div>
       </main>
     </React.Fragment>
   </Router>
-);  
+);
 
 export default App;

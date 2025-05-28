@@ -26,7 +26,7 @@ class MarketPairs extends React.Component {
                 lowPrice: item.lowPrice || item.l,
                 quoteVolume: item.quoteVolume || item.q,
             }
-        }) 
+        })
         return ticker;
     }
 
@@ -45,7 +45,7 @@ class MarketPairs extends React.Component {
         streams = streams.join('/');
         let connection = btoa(streams);
         this[connection] = new WebSocket(`wss://stream.binance.com:9443/stream?streams=${streams}`);
-        this[connection].onmessage = evt => { 
+        this[connection].onmessage = evt => {
             let ticker = this._getTickerBySymbol(JSON.parse(evt.data).data)
             this.props.dispatch({
                 type: 'UPDATE_MARKET_PAIRS',
@@ -99,10 +99,10 @@ class MarketPairs extends React.Component {
                     </li>
                     <li className="nav-item">
                         <a className={this.props.active_market.market === 'USDT' ? 'nav-link active' : 'nav-link'} onClick={this._handleTabClick} data-tab="USDT">USDT<span className="d-none d-sm-inline"> Markets</span></a>
-                    </li>    
+                    </li>
                 </ul>
                 {this.props.market_pairs && this.props.active_market.filtered_pairs ? <DataTable ticker={this.props.market_pairs} filter={this.props.active_market.filtered_pairs} /> : <Loading />}
-            </React.Fragment>    
+            </React.Fragment>
       )
     }
 
